@@ -9,14 +9,15 @@ runs:
       uses: actions/checkout@v2
     - run: Build docker
       uses: docker-practice/actions-setup-docker@master
-      shell: bash
     - name: Pack environment
       run: |
         set -x
         docker run -v $(pwd)/environment.yml:/tmp/environment.yml \
         -v $(pwd):/tmp/project \
         -e ENVIRONMENT_NAME=${{ env.ENVIRONMENT_NAME }} --name build-env  -t jgarrahan/conda-pack-centos6:v0.0 /tmp/environment.yml
+      shell: bash
     - name: Copy environment
       run: |
         set -x 
         docker cp build-env:/root/${{ env.ENVIRONMENT_NAME }}.tar.gz .
+      shell: bash
