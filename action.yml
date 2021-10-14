@@ -7,7 +7,7 @@ runs:
   steps:
     - name: Checkout project
       uses: actions/checkout@v2
-    - run: Build docker
+    - name: Build docker
       uses: docker-practice/actions-setup-docker@master
     - name: Pack environment
       run: |
