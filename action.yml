@@ -13,7 +13,7 @@ runs:
         set -x
         docker run -v $(pwd)/environment.yml:/tmp/environment.yml \
         -v $(pwd):/tmp/project \
-        -v ${{ env.TEST_FILE }}:/tmp/run-test.sh \
+        -v $(pwd)/${{ env.TEST_FILE }}:/tmp/run-test.sh \
         -e ENVIRONMENT_NAME=${{ env.ENVIRONMENT_NAME }} --name build-env  -t jgarrahan/lcls-rhel6-conda-docker:v1.0 /tmp/environment.yml
       shell: bash
     - name: Copy environment
