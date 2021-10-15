@@ -1,4 +1,3 @@
-
 name: 'conda-pack for lcls rhel6'
 description: 'Execute conda-pack in rhel6'
 author: 'jacquelinegarrahan'
@@ -14,7 +13,8 @@ runs:
         set -x
         docker run -v $(pwd)/environment.yml:/tmp/environment.yml \
         -v $(pwd):/tmp/project \
-        -e ENVIRONMENT_NAME=${{ env.ENVIRONMENT_NAME }} --name build-env  -t jgarrahan/conda-pack-centos6:v0.0 /tmp/environment.yml
+        -v ${{ env.TEST_FILE }}:/tmp/run-test.sh \
+        -e ENVIRONMENT_NAME=${{ env.ENVIRONMENT_NAME }} --name build-env  -t jgarrahan/conda-pack-centos6:v0.9 /tmp/environment.yml
       shell: bash
     - name: Copy environment
       run: |
