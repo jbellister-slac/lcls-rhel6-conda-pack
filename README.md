@@ -4,7 +4,7 @@ This action is a composite action that handles the creation and testing of a pyt
 
 In order to use this project, the repository must be packaged with a root level `environment.yml` file constructed using the [conda template](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually). The action creates an environment from this file within the context of the RHEL6 docker image specified by [lcls-rhel6-conda-docker](https://github.com/slaclab/lcls-rhel6-conda-docker) and will store the artifact.
 
-The use of this action in a worklow requires defining the environment variable `ENVIRONMENT_NAME`, which should match the name specified in the `environment.yml`.
+The use of this action in a worklow requires defining the environment variable `ENVIRONMENT_NAME`, which should match the name specified in the `environment.yml`. Optionally (but encouraged), a test bash script may be packaged with the environment repository and indicated to the docker image using `TEST_FILE` environment variable.
 
 ```yaml
 name: Create conda environment for my-environment
@@ -18,6 +18,7 @@ jobs:
   build:
     env:
       ENVIRONMENT_NAME: my-environment
+      TEST_FILE: my-test-file.sh
     runs-on: ubuntu-latest
     name: Build environment
     steps:
