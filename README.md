@@ -23,7 +23,7 @@ jobs:
     name: Build environment
     steps:
       - name: Build environment
-        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v0.3
+        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v1.2
 ```
 
 The packed and tarred environment is then available in the working directory of the action with the naming scheme `{ENVIRONMENT_NAME}.tar.gz` For example, the following action will upload the packed environment on pushed tags. 
@@ -44,7 +44,7 @@ jobs:
     name: Build environment
     steps:
       - name: Build environment
-        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v0.3
+        uses: jacquelinegarrahan/lcls-rhel6-conda-pack@v1.2
       - name: Upload artifact to release
         uses: svenstaro/upload-release-action@v2
         with:
